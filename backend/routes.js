@@ -1,6 +1,7 @@
 // These are all the routes for my node server. I put them in a seperate files to keep the server.js file clean
 
 const express = require('express');
+const Job = require('./models/jobModel');
 
 const router = express.Router();
 
@@ -10,8 +11,22 @@ router.get('/jobs', (req, res) => {
 });
 
 // POST a new job card
-router.post('/jobs', (req, res) => {
-    res.json({ mssg: 'POST a new job card' });
+router.post('/jobs', async (req, res) => {
+    const { jobTitle, companyName, jobPostingURL, salary, location, notes } =
+        req.body;
+    try {
+        const job = await Job.create({
+            jobTitle,
+            companyName,
+            jobPostingURL,
+            salary,
+            location,
+            notes,
+        });
+        res.status(200).json(job);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
 });
 
 // DELETE a job card
