@@ -4,17 +4,15 @@
 const express = require('express'); // require express package that I installed with 'npm install express'
 const mongoose = require('mongoose');
 require('dotenv').config(); // Environment variables
-
+const cors = require('cors');
 const app = express(); // Creates an express app and store it in 'app'
 const routes = require('./routes');
 
 // Middleware
 app.use(express.json());
 
-app.use((req, res, next) => {
-    console.log(req.path, req.method);
-    next();
-});
+// CORS
+app.use(cors());
 
 // Routes
 app.use('/api', routes);
