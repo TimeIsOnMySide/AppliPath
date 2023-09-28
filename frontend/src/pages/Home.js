@@ -20,8 +20,35 @@ const Home = () => {
     }, []);
 
     return (
-        <div className="home">
-            <div className="jobs">
+        <div className="home flex-container">
+            <div className="board">
+                <div className="board-header">
+                    <h2>Need to Apply</h2>
+                </div>
+                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
+            </div>
+            <div className="board flex-item">
+                <div className="board-header">
+                    <h2>Applied</h2>
+                </div>
+                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
+            </div>
+            <div className="board flex-item">
+                <div className="board-header">
+                    <h2>Interview</h2>
+                </div>
+                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
+            </div>
+            <div className="board flex-item">
+                <div className="board-header">
+                    <h2>Offer Recieved</h2>
+                </div>
+                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
+            </div>
+            <div className="board flex-item">
+                <div className="board-header">
+                    <h2>Rejected</h2>
+                </div>
                 {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
             </div>
         </div>

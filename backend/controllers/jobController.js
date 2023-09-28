@@ -9,8 +9,15 @@ const getJobs = async (req, res) => {
 
 // POST a new job
 const createJob = async (req, res) => {
-    const { jobTitle, companyName, jobPostingURL, salary, location, notes } =
-        req.body;
+    const {
+        jobTitle,
+        companyName,
+        jobPostingURL,
+        salary,
+        location,
+        notes,
+        boardPosition,
+    } = req.body;
     try {
         const job = await Job.create({
             jobTitle,
@@ -19,6 +26,7 @@ const createJob = async (req, res) => {
             salary,
             location,
             notes,
+            boardPosition,
         });
         res.status(200).json(job);
     } catch (error) {
