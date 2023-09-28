@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
     return (
         <header>
-            <div className="container">
-                <Link to="/">
-                    <h1>AppliPath</h1>
-                </Link>
+            <div className="navbar bg-dark bg-gradient">
+                <div className="container-fluid">
+                    <Link to="/" className="site-title">
+                        <h2>AppliPath</h2>
+                    </Link>
+                </div>
             </div>
         </header>
     );

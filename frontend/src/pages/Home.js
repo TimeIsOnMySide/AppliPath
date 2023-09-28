@@ -1,3 +1,4 @@
+// This is the dashboard where you can see all the job cards in their respective boards
 import { useEffect, useState } from 'react';
 
 // Components

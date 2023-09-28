@@ -1,1 +1,9 @@
 /* Will work on styling after some of the core functionality is working */
+.site-title {
+    text-decoration: none;
+    color: white;
+}
+
+.card-container {
+    box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.39);
+}
