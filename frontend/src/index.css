@@ -4,10 +4,6 @@
     color: white;
 }
 
-.home {
-    padding-top: 2vh;
-}
-
 .card-container {
     border: 3px solid red;
     margin: 2vh 2vh;
@@ -21,9 +17,10 @@
 .board {
     display: flex;
     flex-direction: column;
-
+    min-width: 18vw;
     border: 3px solid red;
     min-height: 80vh;
+    margin-top: 2vh;
 }
 
 .board-header {

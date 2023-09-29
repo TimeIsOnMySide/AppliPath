@@ -1,3 +1,4 @@
+import { Draggable } from 'react-beautiful-dnd';
 const JobCard = ({ job }) => {
     return (
         <div className="card-container">
