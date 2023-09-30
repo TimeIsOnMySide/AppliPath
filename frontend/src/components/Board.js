@@ -1,3 +1,4 @@
+import { Droppable } from 'react-beautiful-dnd';
 import JobCard from './JobCard';
 
 const Board = ({ title, jobs }) => {
@@ -6,10 +7,22 @@ const Board = ({ title, jobs }) => {
             <div className="board-header">
                 <h2>Need to Apply</h2>
             </div>
-            {jobs &&
-                jobs.map((job) => (
-                    <JobCard key={job._id} job={job} status={title} />
-                ))}
+            <Droppable droppableId={title}>
+                {(provided) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                        {jobs && // If i remove the 'jobs &&' part I get a null error on the map function. Do not remove!
+                            jobs.map((job, index) => (
+                                <JobCard
+                                    key={job._id}
+                                    job={job}
+                                    status={title}
+                                    index={index}
+                                />
+                            ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
         </div>
     );
 };

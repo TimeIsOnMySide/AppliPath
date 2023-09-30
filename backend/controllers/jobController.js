@@ -49,7 +49,7 @@ const deleteJob = async (req, res) => {
     res.status(200).json(job);
 };
 
-// UPDATE an existing workout
+// UPDATE an existing job
 const updateJob = async (req, res) => {
     const { id } = req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
