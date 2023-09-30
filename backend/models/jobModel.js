@@ -11,7 +11,7 @@ const jobSchema = new Schema(
         salary: Number,
         location: String,
         notes: String,
-        boardPosition: { type: Number, required: true },
+        status: { type: String, default: 'Need to Apply' },
     },
     { timestamp: true }
 );

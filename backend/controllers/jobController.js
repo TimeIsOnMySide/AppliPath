@@ -16,7 +16,7 @@ const createJob = async (req, res) => {
         salary,
         location,
         notes,
-        boardPosition,
+        status,
     } = req.body;
     try {
         const job = await Job.create({
@@ -26,7 +26,7 @@ const createJob = async (req, res) => {
             salary,
             location,
             notes,
-            boardPosition,
+            status,
         });
         res.status(200).json(job);
     } catch (error) {

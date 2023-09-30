@@ -21,9 +21,9 @@
 .board {
     display: flex;
     flex-direction: column;
-
     border: 3px solid red;
     min-height: 80vh;
+    min-width: 18vw;
 }
 
 .board-header {

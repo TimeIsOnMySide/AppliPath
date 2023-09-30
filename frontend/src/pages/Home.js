@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 // Components
-import JobCard from '../components/JobCard';
+import Board from '../components/Board';
 
 const Home = () => {
     const [jobs, setJobs] = useState(null);
@@ -21,36 +21,11 @@ const Home = () => {
 
     return (
         <div className="home flex-container">
-            <div className="board">
-                <div className="board-header">
-                    <h2>Need to Apply</h2>
-                </div>
-                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
-            </div>
-            <div className="board flex-item">
-                <div className="board-header">
-                    <h2>Applied</h2>
-                </div>
-                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
-            </div>
-            <div className="board flex-item">
-                <div className="board-header">
-                    <h2>Interview</h2>
-                </div>
-                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
-            </div>
-            <div className="board flex-item">
-                <div className="board-header">
-                    <h2>Offer Recieved</h2>
-                </div>
-                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
-            </div>
-            <div className="board flex-item">
-                <div className="board-header">
-                    <h2>Rejected</h2>
-                </div>
-                {jobs && jobs.map((job) => <JobCard key={job._id} job={job} />)}
-            </div>
+            <Board title="Need to Apply" jobs={jobs} />
+            <Board title="Applied" jobs={jobs} />
+            <Board title="Interview" jobs={jobs} />
+            <Board title="Offer Recieved" jobs={jobs} />
+            <Board title="Rejected" jobs={jobs} />
         </div>
     );
 };
