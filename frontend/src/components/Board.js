@@ -5,11 +5,15 @@ const Board = ({ title, jobs }) => {
     return (
         <div className="board">
             <div className="board-header">
-                <h2>Need to Apply</h2>
+                <h2>{title}</h2>
             </div>
             <Droppable droppableId={title}>
                 {(provided) => (
-                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                    <div
+                        className="droppable"
+                        ref={provided.innerRef}
+                        {...provided.droppableProps}
+                    >
                         {jobs && // If i remove the 'jobs &&' part I get a null error on the map function. Do not remove!
                             jobs.map((job, index) => (
                                 <JobCard

@@ -77,48 +77,41 @@ const Home = () => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <div className="home flex-container">
-                <div className="home flex-container">
-                    <Board
-                        title="Need to Apply"
-                        jobs={
-                            jobs &&
-                            jobs.filter(
-                                // Use filter so that when I get the index from the map fuinction in the Board component, the indicies are consecutive numbers
-                                (job) => job.status === 'Need to Apply'
-                            )
-                        }
-                    />
-                    <Board
-                        title="Applied"
-                        jobs={
-                            jobs &&
-                            jobs.filter((job) => job.status === 'Applied')
-                        }
-                    />
-                    <Board
-                        title="Interview"
-                        jobs={
-                            jobs &&
-                            jobs.filter((job) => job.status === 'Interview')
-                        }
-                    />
-                    <Board
-                        title="Offer Recieved"
-                        jobs={
-                            jobs &&
-                            jobs.filter(
-                                (job) => job.status === 'Offer Recieved'
-                            )
-                        }
-                    />
-                    <Board
-                        title="Rejected"
-                        jobs={
-                            jobs &&
-                            jobs.filter((job) => job.status === 'Rejected')
-                        }
-                    />
-                </div>
+                <Board
+                    title="Need to Apply"
+                    jobs={
+                        jobs &&
+                        jobs.filter(
+                            // Use filter so that when I get the index from the map fuinction in the Board component, the indicies are consecutive numbers
+                            (job) => job.status === 'Need to Apply'
+                        )
+                    }
+                />
+                <Board
+                    title="Applied"
+                    jobs={
+                        jobs && jobs.filter((job) => job.status === 'Applied')
+                    }
+                />
+                <Board
+                    title="Interview"
+                    jobs={
+                        jobs && jobs.filter((job) => job.status === 'Interview')
+                    }
+                />
+                <Board
+                    title="Offer Recieved"
+                    jobs={
+                        jobs &&
+                        jobs.filter((job) => job.status === 'Offer Recieved')
+                    }
+                />
+                <Board
+                    title="Rejected"
+                    jobs={
+                        jobs && jobs.filter((job) => job.status === 'Rejected')
+                    }
+                />
             </div>
         </DragDropContext>
     );

@@ -31,3 +31,9 @@
     padding-bottom: 0.5vh;
     padding-top: 2vh;
 }
+
+/* Even if the board is empty, the entire container is still a droppable area. 
+Without this rule, and empty board would shrink to nothing because its a flex item. */
+.droppable {
+    flex-grow: 1;
+}
