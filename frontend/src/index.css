@@ -37,3 +37,37 @@ Without this rule, and empty board would shrink to nothing because its a flex it
 .droppable {
     flex-grow: 1;
 }
+
+.card-form-popup {
+    padding: 2px 5px;
+    line-height: 20px;
+    font-size: 18px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+    width: 40vw;
+}
+
+.card-form-popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-form-popup .header {
+    padding-top: 1vh;
+    text-align: center;
+}
+
+form label {
+    padding: 1vh 0 1vh 0;
+}
+
+form input,
+form textarea {
+    width: 50%;
+}
+
+.card-form-popup button {
+    margin: 2vh 0 2vh 0;
+}

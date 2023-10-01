@@ -1,22 +1,24 @@
 // This is the dashboard where you can see all the job cards in their respective boards
 import { useEffect, useState } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+import CardFormPopup from '../components/CardFormPopup';
 
 // Components
 import Board from '../components/Board';
 
 const Home = () => {
     const [jobs, setJobs] = useState(null);
+
+    const fetchJobs = async () => {
+        const response = await fetch('http://localhost:4000/api/jobs');
+        const json = await response.json();
+
+        if (response.ok) {
+            setJobs(json);
+        }
+    };
+
     useEffect(() => {
-        const fetchJobs = async () => {
-            const response = await fetch('http://localhost:4000/api/jobs');
-            const json = await response.json();
-
-            if (response.ok) {
-                setJobs(json);
-            }
-        };
-
         fetchJobs();
     }, []);
 
@@ -75,45 +77,53 @@ const Home = () => {
     };
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div className="home flex-container">
-                <Board
-                    title="Need to Apply"
-                    jobs={
-                        jobs &&
-                        jobs.filter(
-                            // Use filter so that when I get the index from the map fuinction in the Board component, the indicies are consecutive numbers
-                            (job) => job.status === 'Need to Apply'
-                        )
-                    }
-                />
-                <Board
-                    title="Applied"
-                    jobs={
-                        jobs && jobs.filter((job) => job.status === 'Applied')
-                    }
-                />
-                <Board
-                    title="Interview"
-                    jobs={
-                        jobs && jobs.filter((job) => job.status === 'Interview')
-                    }
-                />
-                <Board
-                    title="Offer Recieved"
-                    jobs={
-                        jobs &&
-                        jobs.filter((job) => job.status === 'Offer Recieved')
-                    }
-                />
-                <Board
-                    title="Rejected"
-                    jobs={
-                        jobs && jobs.filter((job) => job.status === 'Rejected')
-                    }
-                />
-            </div>
-        </DragDropContext>
+        <>
+            <CardFormPopup fetchJobs={fetchJobs} />
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div className="home flex-container">
+                    <Board
+                        title="Need to Apply"
+                        jobs={
+                            jobs &&
+                            jobs.filter(
+                                // Use filter so that when I get the index from the map fuinction in the Board component, the indicies are consecutive numbers
+                                (job) => job.status === 'Need to Apply'
+                            )
+                        }
+                    />
+                    <Board
+                        title="Applied"
+                        jobs={
+                            jobs &&
+                            jobs.filter((job) => job.status === 'Applied')
+                        }
+                    />
+                    <Board
+                        title="Interview"
+                        jobs={
+                            jobs &&
+                            jobs.filter((job) => job.status === 'Interview')
+                        }
+                    />
+                    <Board
+                        title="Offer Recieved"
+                        jobs={
+                            jobs &&
+                            jobs.filter(
+                                (job) => job.status === 'Offer Recieved'
+                            )
+                        }
+                    />
+                    <Board
+                        title="Rejected"
+                        jobs={
+                            jobs &&
+                            jobs.filter((job) => job.status === 'Rejected')
+                        }
+                    />
+                </div>
+            </DragDropContext>
+        </>
     );
 };
 
