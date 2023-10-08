@@ -1,7 +1,7 @@
 import { Droppable } from 'react-beautiful-dnd';
 import JobCard from './JobCard';
 
-const Board = ({ title, jobs }) => {
+const Board = ({ title, jobs, fetchJobs }) => {
     return (
         <div className="board">
             <div className="board-header">
@@ -21,6 +21,7 @@ const Board = ({ title, jobs }) => {
                                     job={job}
                                     status={title}
                                     index={index}
+                                    fetchJobs={fetchJobs}
                                 />
                             ))}
                         {provided.placeholder}

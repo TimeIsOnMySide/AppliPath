@@ -12,6 +12,7 @@ const jobSchema = new Schema(
         location: String,
         notes: String,
         status: { type: String, default: 'Need to Apply' },
+        order: { type: Number, default: 0 },
     },
     { timestamp: true }
 );

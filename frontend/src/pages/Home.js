@@ -86,10 +86,11 @@ const Home = () => {
                         jobs={
                             jobs &&
                             jobs.filter(
-                                // Use filter so that when I get the index from the map fuinction in the Board component, the indicies are consecutive numbers
+                                // Use filter so that when I get the index from the map function in the Board component, the indicies are consecutive numbers
                                 (job) => job.status === 'Need to Apply'
                             )
                         }
+                        fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Applied"
@@ -97,6 +98,7 @@ const Home = () => {
                             jobs &&
                             jobs.filter((job) => job.status === 'Applied')
                         }
+                        fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Interview"
@@ -104,6 +106,7 @@ const Home = () => {
                             jobs &&
                             jobs.filter((job) => job.status === 'Interview')
                         }
+                        fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Offer Recieved"
@@ -113,6 +116,7 @@ const Home = () => {
                                 (job) => job.status === 'Offer Recieved'
                             )
                         }
+                        fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Rejected"
@@ -120,6 +124,7 @@ const Home = () => {
                             jobs &&
                             jobs.filter((job) => job.status === 'Rejected')
                         }
+                        fetchJobs={fetchJobs}
                     />
                 </div>
             </DragDropContext>
