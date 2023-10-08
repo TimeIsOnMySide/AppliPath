@@ -8,7 +8,12 @@ const ConfirmDeletePopup = ({
     handleCancelDelete,
 }) => {
     return (
-        <Popup open={open} modal closeOnDocumentClick={false}>
+        <Popup
+            open={open}
+            modal
+            trigger={<button className="btn btn-primary">Delete</button>}
+            closeOnDocumentClick={false}
+        >
             <div>
                 <p>Are you sure you want to delete this job?</p>
                 <button onClick={handleConfirmDelete}>Yes, Delete</button>

@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import ConfirmDeletePopup from './ConfirmDeletePopup';
+import EditCardPopup from './EditCardPopup';
 
 const JobCard = ({ job, status, index, fetchJobs }) => {
     const [showConfirmation, setShowConfirmation] = useState(false);
-
-    const handleDeleteClick = () => {
-        setShowConfirmation(true);
-    };
 
     const handleConfirmDelete = async () => {
         try {
@@ -36,8 +33,10 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
                         <div className="card-container">
                             <h3>{job.jobTitle}</h3>
                             <h4>{job.companyName}</h4>
-                            <p>${job.salary}</p>
-                            <button onClick={handleDeleteClick}>Delete</button>
+                            <EditCardPopup
+                                job={job}
+                                fetchJobs={fetchJobs}
+                            />{' '}
                             <ConfirmDeletePopup
                                 open={showConfirmation}
                                 handleConfirmDelete={handleConfirmDelete}
