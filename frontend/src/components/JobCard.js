@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import ConfirmDeletePopup from './ConfirmDeletePopup';
 import EditCardPopup from './EditCardPopup';
+import JobDetailsPopup from './JobDetailsPopup';
 
 const JobCard = ({ job, status, index, fetchJobs }) => {
     const [showConfirmation, setShowConfirmation] = useState(false);
@@ -33,6 +34,7 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
                         <div className="card-container">
                             <h3>{job.jobTitle}</h3>
                             <h4>{job.companyName}</h4>
+                            <JobDetailsPopup job={job} />
                             <EditCardPopup
                                 job={job}
                                 fetchJobs={fetchJobs}

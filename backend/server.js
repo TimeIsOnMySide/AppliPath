@@ -5,7 +5,7 @@ const express = require('express'); // require express package that I installed 
 const mongoose = require('mongoose');
 require('dotenv').config(); // Environment variables
 const cors = require('cors');
-const fetch = require('node-fetch'); // Import node-fetch
+const axios = require('axios'); // Import 'axios'
 const app = express(); // Creates an express app and store it in 'app'
 const routes = require('./routes');
 
@@ -34,17 +34,24 @@ mongoose
         console.log(error);
     });
 
-// Create a route to handle address geocoding
 app.get('/geocode', async (req, res) => {
     const address = req.query.address;
-
+    console.log(address);
     try {
-        const response = await fetch(
+        const response = await axios.get(
             `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.GOOGLE_MAPS_API_KEY}`
         );
-        const data = await response.json();
-        const location = data.results[0].geometry.location;
-        res.json(location);
+
+        if (response.data.status === 'OK') {
+            const location = response.data.results[0].geometry.location;
+            res.json(location);
+        } else {
+            console.error(
+                'Geocode request failed with status:',
+                response.data.status
+            );
+            res.status(500).json({ error: 'Failed to geocode address' });
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to geocode address' });
