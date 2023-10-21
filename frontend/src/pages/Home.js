@@ -83,47 +83,32 @@ const Home = () => {
                 <div className="home flex-container">
                     <Board
                         title="Need to Apply"
-                        jobs={
-                            jobs &&
-                            jobs.filter(
-                                // Use filter so that when I get the index from the map function in the Board component, the indicies are consecutive numbers
-                                (job) => job.status === 'Need to Apply'
-                            )
-                        }
+                        jobs={jobs?.filter(
+                            // Use filter so that when I get the index from the map function in the Board component, the indicies are consecutive numbers
+                            (job) => job.status === 'Need to Apply'
+                        )}
                         fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Applied"
-                        jobs={
-                            jobs &&
-                            jobs.filter((job) => job.status === 'Applied')
-                        }
+                        jobs={jobs?.filter((job) => job.status === 'Applied')}
                         fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Interview"
-                        jobs={
-                            jobs &&
-                            jobs.filter((job) => job.status === 'Interview')
-                        }
+                        jobs={jobs?.filter((job) => job.status === 'Interview')}
                         fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Offer Recieved"
-                        jobs={
-                            jobs &&
-                            jobs.filter(
-                                (job) => job.status === 'Offer Recieved'
-                            )
-                        }
+                        jobs={jobs?.filter(
+                            (job) => job.status === 'Offer Recieved'
+                        )}
                         fetchJobs={fetchJobs}
                     />
                     <Board
                         title="Rejected"
-                        jobs={
-                            jobs &&
-                            jobs.filter((job) => job.status === 'Rejected')
-                        }
+                        jobs={jobs?.filter((job) => job.status === 'Rejected')}
                         fetchJobs={fetchJobs}
                     />
                 </div>
