@@ -67,6 +67,7 @@ passport.use(
         {
             usernameField: 'username',
             passwordField: 'password',
+            session: true,
         },
         (username, password, done) => {
             User.authenticate()(username, password, (err, user) => {
@@ -90,11 +91,12 @@ passport.deserializeUser(User.deserializeUser());
 // Middleware
 app.use(express.json());
 
-const ensureAuthenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return next();
+const loggedIn = (req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.status(401).json({ error: 'Authentication required' });
     }
-    res.status(401).json({ error: 'Authentication required' });
 };
 
 // CORS
@@ -103,7 +105,7 @@ app.use(cors());
 // Now define your routes
 
 // Routes
-app.use('/api/jobs', ensureAuthenticated, routes);
+app.use('/api/jobs', loggedIn, routes);
 app.use('/api', routes);
 
 // Connect to MongoDB Atlas

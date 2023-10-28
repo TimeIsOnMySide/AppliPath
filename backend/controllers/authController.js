@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+
 const User = require('../models/userModel');
 
 // Register Route
@@ -54,7 +55,7 @@ const loginUser = async (req, res, next) => {
             }
 
             console.log('Login successful');
-            return res.status(200).json({ authToken });
+            return res.status(200).json({ user });
         });
     })(req, res, next);
 };
