@@ -1,10 +1,16 @@
 const Job = require('../models/jobModel');
 const mongoose = require('mongoose');
 
-// Get all Jobs
+// Get all Jobs for the current user
 const getJobs = async (req, res) => {
-    const jobs = await Job.find({});
-    res.status(200).json(jobs);
+    const userId = req.user._id;
+
+    try {
+        const jobs = await Job.find({ createdBy: userId });
+        res.status(200).json(jobs);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch jobs' });
+    }
 };
 
 // POST a new job
@@ -17,7 +23,6 @@ const createJob = async (req, res) => {
         location,
         notes,
         status,
-        order,
     } = req.body;
     try {
         const job = await Job.create({
@@ -28,7 +33,7 @@ const createJob = async (req, res) => {
             location,
             notes,
             status,
-            order,
+            createdBy: req.user._id,
         });
         res.status(200).json(job);
     } catch (error) {
