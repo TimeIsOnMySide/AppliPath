@@ -1,6 +1,6 @@
 // These are all the routes for my node server. I put them in a seperate files to keep the server.js file clean
-const express = require('express');
 
+const express = require('express');
 const {
     createJob,
     getJobs,
@@ -21,20 +21,5 @@ router.delete('/jobs/:id', deleteJob);
 
 // UPDATE a job card
 router.patch('/jobs/:id', updateJob);
-
-const {
-    registerUser,
-    loginUser,
-    logoutUser,
-} = require('./controllers/authController');
-
-// Register Route
-router.post('/register', registerUser);
-
-// Login Route
-router.post('/login', loginUser);
-
-// Logout Route
-router.get('/logout', logoutUser);
 
 module.exports = router;

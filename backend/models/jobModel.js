@@ -12,10 +12,6 @@ const jobSchema = new Schema(
         location: String,
         notes: String,
         status: { type: String, default: 'Need to Apply' },
-        createdBy: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
     },
     { timestamp: true }
 );
