@@ -14,6 +14,7 @@ const JobDetailsPopup = ({ job }) => {
             if (response.ok) {
                 const data = await response.json();
                 console.log(data);
+                console.log('successful');
                 return data;
             } else {
                 console.error('Failed to fetch Google Maps data');
