@@ -36,7 +36,6 @@ const CardFormPopup = ({ fetchJobs }) => {
                 throw new Error('Failed to save job.');
             }
 
-            console.log('Job saved successfully!');
             popupRef.current.close(); // Close the popup
             await fetchJobs(); // Call fetchJobs to update the job list
         } catch (error) {

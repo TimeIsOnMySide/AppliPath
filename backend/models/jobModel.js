@@ -12,6 +12,10 @@ const jobSchema = new Schema(
         location: String,
         notes: String,
         status: { type: String, default: 'Need to Apply' },
+        user_id: {
+            type: String,
+            required: true,
+        },
     },
     { timestamp: true }
 );

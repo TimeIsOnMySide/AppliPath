@@ -76,6 +76,7 @@ const Home = () => {
                 method: 'PATCH', // Use PATCH method
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${user.token}`,
                 },
                 body: JSON.stringify({ status: newStatus }),
             });
