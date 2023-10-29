@@ -1,11 +1,16 @@
 import React, { useRef } from 'react';
 import Popup from 'reactjs-popup';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const CardFormPopup = ({ fetchJobs }) => {
     const popupRef = useRef(null);
+    const { user } = useAuthContext();
 
     const formSubmit = async (event) => {
         event.preventDefault();
+        if (!user) {
+            return;
+        }
 
         const formData = {
             jobTitle: event.target.elements['job-title'].value,
@@ -22,6 +27,7 @@ const CardFormPopup = ({ fetchJobs }) => {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${user.token}`,
                 },
                 body: JSON.stringify(formData),
             });

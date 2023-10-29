@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const EditCardPopup = ({ job, fetchJobs }) => {
     const popupRef = useRef(null);
     const [formData, setFormData] = useState({});
+    const { user } = useAuthContext();
 
     useEffect(() => {
         setFormData({
@@ -19,6 +21,10 @@ const EditCardPopup = ({ job, fetchJobs }) => {
     const formSubmit = async (event) => {
         event.preventDefault();
 
+        if (!user) {
+            return;
+        }
+
         try {
             const response = await fetch(
                 `http://localhost:4000/api/jobs/${job._id}`,
@@ -26,6 +32,7 @@ const EditCardPopup = ({ job, fetchJobs }) => {
                     method: 'PATCH', // Use PATCH to update the existing job
                     headers: {
                         'Content-Type': 'application/json',
+                        Authorization: `Bearer ${user.token}`,
                     },
                     body: JSON.stringify(formData),
                 }

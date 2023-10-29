@@ -3,14 +3,20 @@ import { Draggable } from 'react-beautiful-dnd';
 import ConfirmDeletePopup from './ConfirmDeletePopup';
 import EditCardPopup from './EditCardPopup';
 import JobDetailsPopup from './JobDetailsPopup';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const JobCard = ({ job, status, index, fetchJobs }) => {
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const { user } = useAuthContext();
 
     const handleConfirmDelete = async () => {
+        if (!user) {
+            return;
+        }
         try {
             await fetch(`http://localhost:4000/api/jobs/${job._id}`, {
                 method: 'DELETE',
+                Authorization: `Bearer ${user.token}`,
             });
             await fetchJobs();
         } catch (error) {

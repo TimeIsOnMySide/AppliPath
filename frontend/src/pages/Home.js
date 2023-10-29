@@ -1,6 +1,7 @@
 // This is the dashboard where you can see all the job cards in their respective boards
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { useAuthContext } from '../hooks/useAuthContext';
 import CardFormPopup from '../components/CardFormPopup';
 
 // Components
@@ -8,19 +9,26 @@ import Board from '../components/Board';
 
 const Home = () => {
     const [jobs, setJobs] = useState(null);
+    const { user } = useAuthContext();
 
-    const fetchJobs = async () => {
-        const response = await fetch('http://localhost:4000/api/jobs');
+    const fetchJobs = useCallback(async () => {
+        const response = await fetch('http://localhost:4000/api/jobs', {
+            headers: {
+                Authorization: `Bearer ${user.token}`,
+            },
+        });
         const json = await response.json();
 
         if (response.ok) {
             setJobs(json);
         }
-    };
+    }, [user, setJobs]);
 
     useEffect(() => {
-        fetchJobs();
-    }, []);
+        if (user) {
+            fetchJobs();
+        }
+    }, [user, fetchJobs]);
 
     const onDragEnd = async (result) => {
         const { source, destination, draggableId } = result;

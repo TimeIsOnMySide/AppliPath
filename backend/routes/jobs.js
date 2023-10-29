@@ -1,4 +1,4 @@
-// These are all the routes for my node server. I put them in a seperate files to keep the server.js file clean
+// These are all the job routes for my node server. I put them in a seperate files to keep the server.js file clean
 
 const express = require('express');
 const {
@@ -8,7 +8,11 @@ const {
     updateJob,
 } = require('../controllers/jobController');
 
+const requireAuth = require('../middleware/requireAuth');
+
 const router = express.Router();
+
+router.use(requireAuth); // Protect all job routes
 
 // GET all job cards
 router.get('/jobs', getJobs);
