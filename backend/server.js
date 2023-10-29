@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api', jobRoutes);
+app.use('/api/jobs', jobRoutes);
 app.use('/api/user', userRoutes);
 
 // Connect to mongoDB atlas

@@ -15,15 +15,15 @@ const router = express.Router();
 router.use(requireAuth); // Protect all job routes
 
 // GET all job cards
-router.get('/jobs', getJobs);
+router.get('/', getJobs);
 
 // POST a new job card
-router.post('/jobs', createJob);
+router.post('/', createJob);
 
 // DELETE a job card
-router.delete('/jobs/:id', deleteJob);
+router.delete('/:id', deleteJob);
 
 // UPDATE a job card
-router.patch('/jobs/:id', updateJob);
+router.patch('/:id', updateJob);
 
 module.exports = router;
