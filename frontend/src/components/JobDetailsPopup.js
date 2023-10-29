@@ -68,6 +68,11 @@ const JobDetailsPopup = ({ job }) => {
         }
     };
 
+    const { format } = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
     return (
         <Popup
             trigger={
@@ -99,7 +104,7 @@ const JobDetailsPopup = ({ job }) => {
                     </a>
                 </div>
                 <div>
-                    <strong>Salary:</strong> {job.salary}
+                    <strong>Salary:</strong> {format(job.salary)}
                 </div>
                 <div>
                     <strong>Location:</strong> {job.location}

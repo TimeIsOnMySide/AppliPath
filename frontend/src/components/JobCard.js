@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import ConfirmDeletePopup from './ConfirmDeletePopup';
 import EditCardPopup from './EditCardPopup';
@@ -6,7 +6,6 @@ import JobDetailsPopup from './JobDetailsPopup';
 import { useAuthContext } from '../hooks/useAuthContext';
 
 const JobCard = ({ job, status, index, fetchJobs }) => {
-    const [showConfirmation, setShowConfirmation] = useState(false);
     const { user } = useAuthContext();
 
     const handleConfirmDelete = async () => {
@@ -45,7 +44,6 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
                                 fetchJobs={fetchJobs}
                             />{' '}
                             <ConfirmDeletePopup
-                                open={showConfirmation}
                                 handleConfirmDelete={handleConfirmDelete}
                             />
                         </div>
