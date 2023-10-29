@@ -1,6 +1,8 @@
 // ConfirmDeletePopup.js
 import React from 'react';
 import Popup from 'reactjs-popup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const ConfirmDeletePopup = ({
     open,
@@ -11,7 +13,14 @@ const ConfirmDeletePopup = ({
         <Popup
             open={open}
             modal
-            trigger={<button className="btn btn-primary">Delete</button>}
+            trigger={
+                <button className="btn btn-danger btn-delete">
+                    <FontAwesomeIcon
+                        icon={faTrash}
+                        style={{ color: '#ffffff' }}
+                    />
+                </button>
+            }
             closeOnDocumentClick={false}
         >
             <div>

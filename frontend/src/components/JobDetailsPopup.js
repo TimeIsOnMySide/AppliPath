@@ -1,5 +1,10 @@
 import Popup from 'reactjs-popup';
 import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faCircleInfo,
+    faMapLocationDot,
+} from '@fortawesome/free-solid-svg-icons';
 
 const JobDetailsPopup = ({ job }) => {
     // Check if a location is provided
@@ -65,7 +70,14 @@ const JobDetailsPopup = ({ job }) => {
 
     return (
         <Popup
-            trigger={<button className="btn btn-primary">View Details</button>}
+            trigger={
+                <button className="btn btn-primary btn-details">
+                    <FontAwesomeIcon
+                        icon={faCircleInfo}
+                        style={{ color: '#ffffff' }}
+                    />
+                </button>
+            }
             modal
         >
             <div className="card-form-popup">
@@ -97,7 +109,10 @@ const JobDetailsPopup = ({ job }) => {
                 </div>
                 {hasLocation && (
                     <button className="btn btn-primary" onClick={handleViewMap}>
-                        View Map
+                        <FontAwesomeIcon
+                            icon={faMapLocationDot}
+                            style={{ color: '#ffffff' }}
+                        />
                     </button>
                 )}
                 <div

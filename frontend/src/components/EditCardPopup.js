@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Popup from 'reactjs-popup';
 import { useAuthContext } from '../hooks/useAuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 const EditCardPopup = ({ job, fetchJobs }) => {
     const popupRef = useRef(null);
@@ -61,7 +63,14 @@ const EditCardPopup = ({ job, fetchJobs }) => {
     return (
         <Popup
             ref={popupRef}
-            trigger={<button className="btn btn-primary">Edit</button>}
+            trigger={
+                <button className="btn btn-secondary btn-edit">
+                    <FontAwesomeIcon
+                        icon={faPencil}
+                        style={{ color: '#ffffff' }}
+                    />
+                </button>
+            }
             modal
         >
             <div className="card-form-popup">

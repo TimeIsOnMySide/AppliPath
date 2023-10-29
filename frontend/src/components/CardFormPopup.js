@@ -46,7 +46,9 @@ const CardFormPopup = ({ fetchJobs }) => {
     return (
         <Popup
             ref={popupRef}
-            trigger={<button className="btn btn-primary">Add Job</button>}
+            trigger={
+                <button className="btn btn-primary btn-add-job">Add Job</button>
+            }
             modal
         >
             <div className="card-form-popup">
