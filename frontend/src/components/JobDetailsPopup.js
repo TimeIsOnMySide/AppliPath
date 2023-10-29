@@ -80,7 +80,7 @@ const JobDetailsPopup = ({ job }) => {
             }
             modal
         >
-            <div className="card-form-popup">
+            <div className="card-form-popup job-details-popup">
                 <h3 className="header">Job Details</h3>
                 <div>
                     <strong>Job Title:</strong> {job.jobTitle}

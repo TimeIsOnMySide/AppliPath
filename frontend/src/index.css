@@ -229,6 +229,11 @@ form textarea {
     margin: 2vh 0 2vh 0;
 }
 
+.job-details-popup {
+    line-height: 1.8rem;
+    font-size: 1.3rem;
+}
+
 .map-container {
     width: 100%;
     height: 400px;
