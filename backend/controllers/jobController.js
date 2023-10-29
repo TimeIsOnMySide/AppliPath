@@ -69,7 +69,7 @@ const updateJob = async (req, res) => {
     res.status(200).json(job);
 };
 
-// Export all the functions to be used in the routes.js file
+// Export all the functions to be used in the routes file
 module.exports = {
     createJob,
     getJobs,

@@ -7,7 +7,8 @@ require('dotenv').config(); // Environment variables
 const cors = require('cors');
 const axios = require('axios'); // Import 'axios'
 const app = express(); // Creates an express app and store it in 'app'
-const routes = require('./routes');
+const jobRoutes = require('./routes/jobs');
+const userRoutes = require('./routes/user');
 
 // Middleware
 app.use(express.json());
@@ -16,7 +17,8 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/api', routes);
+app.use('/api', jobRoutes);
+app.use('/api/user', userRoutes);
 
 // Connect to mongoDB atlas
 mongoose
