@@ -1,8 +1,86 @@
-/* Will work on styling after some of the core functionality is working */
+.App {
+    background-color: rgb(238, 238, 238);
+}
+
+/* Navbar */
+
 .site-title {
     text-decoration: none;
-    color: white;
+    color: black;
 }
+
+.user-email {
+    font-weight: bold;
+    padding-right: 1vw;
+}
+
+.btn-login {
+    margin-right: 1vw;
+}
+
+/* Login Page */
+
+.login-page {
+    height: 91vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    width: 30vw;
+    height: 40vh;
+    min-height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(248, 248, 248);
+    -webkit-box-shadow: 0px 0px 36px 1px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 36px 1px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    color: black;
+}
+
+.login-form h3 {
+    font-weight: bold;
+}
+
+.email-label {
+    margin: 2vh 0 0;
+    padding: 0;
+}
+
+.password-label {
+    margin: 0;
+    padding: 0;
+}
+
+.login-form button {
+    margin-top: 3vh;
+}
+
+.email-input {
+    width: 60%;
+    height: 6vh;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-bottom: -1px;
+}
+
+.password-input {
+    width: 60%;
+    height: 6vh;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 1vh;
+}
+
+/* Home Page */
 
 .home {
     padding-top: 2vh;
