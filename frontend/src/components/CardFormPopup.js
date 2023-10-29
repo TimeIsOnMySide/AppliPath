@@ -71,7 +71,7 @@ const CardFormPopup = ({ fetchJobs }) => {
 
                     <label>Notes:</label>
                     <textarea name="notes" />
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-success">
                         Save
                     </button>
                 </form>

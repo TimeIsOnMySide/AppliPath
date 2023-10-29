@@ -4,11 +4,7 @@ import Popup from 'reactjs-popup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-const ConfirmDeletePopup = ({
-    open,
-    handleConfirmDelete,
-    handleCancelDelete,
-}) => {
+const ConfirmDeletePopup = ({ open, handleConfirmDelete }) => {
     return (
         <Popup
             open={open}
@@ -23,11 +19,29 @@ const ConfirmDeletePopup = ({
             }
             closeOnDocumentClick={false}
         >
-            <div>
-                <p>Are you sure you want to delete this job?</p>
-                <button onClick={handleConfirmDelete}>Yes, Delete</button>
-                <button onClick={handleCancelDelete}>Cancel</button>
-            </div>
+            {(close) => (
+                <div className="confirm-delete-popup">
+                    <p className="confirm-delete-text">
+                        Are you sure you want to delete this job?
+                    </p>
+                    <span>
+                        <button
+                            onClick={handleConfirmDelete}
+                            className="btn btn-primary"
+                        >
+                            Yes, Delete
+                        </button>
+                        <button
+                            onClick={() => {
+                                close();
+                            }}
+                            className="btn btn-danger btn-cancel-delete"
+                        >
+                            Cancel
+                        </button>
+                    </span>
+                </div>
+            )}
         </Popup>
     );
 };

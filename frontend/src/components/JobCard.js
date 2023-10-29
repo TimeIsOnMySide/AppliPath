@@ -16,16 +16,15 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
         try {
             await fetch(`http://localhost:4000/api/jobs/${job._id}`, {
                 method: 'DELETE',
-                Authorization: `Bearer ${user.token}`,
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${user.token}`,
+                },
             });
             await fetchJobs();
         } catch (error) {
             console.error('Error deleting job: ', error);
         }
-    };
-
-    const handleCancelDelete = () => {
-        setShowConfirmation(false);
     };
 
     if (job.status === status) {
@@ -48,7 +47,6 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
                             <ConfirmDeletePopup
                                 open={showConfirmation}
                                 handleConfirmDelete={handleConfirmDelete}
-                                handleCancelDelete={handleCancelDelete}
                             />
                         </div>
                     </div>
