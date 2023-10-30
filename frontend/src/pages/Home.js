@@ -12,11 +12,14 @@ const Home = () => {
     const { user } = useAuthContext();
 
     const fetchJobs = useCallback(async () => {
-        const response = await fetch('http://localhost:4000/api/jobs', {
-            headers: {
-                Authorization: `Bearer ${user.token}`,
-            },
-        });
+        const response = await fetch(
+            'https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs',
+            {
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
+            }
+        );
         const json = await response.json();
 
         if (response.ok) {
@@ -72,14 +75,17 @@ const Home = () => {
 
         // Update the job's status in the database
         try {
-            await fetch(`http://localhost:4000/api/jobs/${draggableId}`, {
-                method: 'PATCH', // Use PATCH method
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user.token}`,
-                },
-                body: JSON.stringify({ status: newStatus }),
-            });
+            await fetch(
+                `https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs/${draggableId}`,
+                {
+                    method: 'PATCH', // Use PATCH method
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                    body: JSON.stringify({ status: newStatus }),
+                }
+            );
         } catch (error) {
             console.error('Error updating job status:', error);
         }

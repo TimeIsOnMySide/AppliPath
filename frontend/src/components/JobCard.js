@@ -13,13 +13,16 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
             return;
         }
         try {
-            await fetch(`http://localhost:4000/api/jobs/${job._id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${user.token}`,
-                },
-            });
+            await fetch(
+                `https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs/${job._id}`,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                }
+            );
             await fetchJobs();
         } catch (error) {
             console.error('Error deleting job: ', error);
