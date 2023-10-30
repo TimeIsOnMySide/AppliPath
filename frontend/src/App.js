@@ -16,7 +16,7 @@ function App() {
                 <div className="pages">
                     <Routes>
                         <Route
-                            path="/home"
+                            path="/"
                             element={user ? <Home /> : <Navigate to="/login" />}
                         />
                         <Route
