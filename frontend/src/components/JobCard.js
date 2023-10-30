@@ -14,7 +14,7 @@ const JobCard = ({ job, status, index, fetchJobs }) => {
         }
         try {
             await fetch(
-                `https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs/${job._id}`,
+                `https://applipath-backend.vercel.app/api/jobs/${job._id}`,
                 {
                     method: 'DELETE',
                     headers: {

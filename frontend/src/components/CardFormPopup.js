@@ -24,7 +24,7 @@ const CardFormPopup = ({ fetchJobs }) => {
 
         try {
             const response = await fetch(
-                'https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs',
+                'https://applipath-backend.vercel.app/api/jobs',
                 {
                     method: 'POST',
                     headers: {

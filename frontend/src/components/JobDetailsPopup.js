@@ -14,7 +14,7 @@ const JobDetailsPopup = ({ job }) => {
     const fetchGoogleMapsData = async (location) => {
         try {
             const response = await fetch(
-                `https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/geocode?address=${location}`
+                `https://applipath-backend.vercel.app/geocode?address=${location}`
             );
             if (response.ok) {
                 const data = await response.json();

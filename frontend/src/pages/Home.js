@@ -13,7 +13,7 @@ const Home = () => {
 
     const fetchJobs = useCallback(async () => {
         const response = await fetch(
-            'https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs',
+            'https://applipath-backend.vercel.app/api/jobs',
             {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
@@ -76,7 +76,7 @@ const Home = () => {
         // Update the job's status in the database
         try {
             await fetch(
-                `https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs/${draggableId}`,
+                `https://applipath-backend.vercel.app/api/jobs/${draggableId}`,
                 {
                     method: 'PATCH', // Use PATCH method
                     headers: {

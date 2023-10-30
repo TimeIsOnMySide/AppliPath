@@ -29,7 +29,7 @@ const EditCardPopup = ({ job, fetchJobs }) => {
 
         try {
             const response = await fetch(
-                `https://applipath-backend-g1cejbj70-carlys-projects-870d5eba.vercel.app/api/jobs/${job._id}`,
+                `https://applipath-backend.vercel.app/api/jobs/${job._id}`,
                 {
                     method: 'PATCH', // Use PATCH to update the existing job
                     headers: {
