@@ -50,7 +50,7 @@ app.get('/geocode', async (req, res) => {
         } else {
             console.error(
                 'Geocode request failed with status:',
-                response.data.status
+                response.data.error_message
             );
             res.status(500).json({ error: 'Failed to geocode address' });
         }
