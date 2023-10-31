@@ -115,7 +115,7 @@ const Home = () => {
                         fetchJobs={fetchJobs}
                     />
                     <Board
-                        title="Offer Recieved"
+                        title="Offer Received"
                         jobs={jobs?.filter(
                             (job) => job.status === 'Offer Recieved'
                         )}
