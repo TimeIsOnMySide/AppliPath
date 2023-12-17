@@ -12,7 +12,7 @@ With Applipath, managing and monitoring your job applications has never been mor
    
 3. In both the backend and frontend folders, run `npm install` to install dependencies.
    
-5. Set environment variables:
+5. Set environment variables. In backend folder, create .env file:
    - Backend:
      ```
      PORT=4000
